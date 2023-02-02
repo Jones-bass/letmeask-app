@@ -1,18 +1,11 @@
 import illustrationImg from '../../assets/images/illustration.svg'
 import logoImg from '../../assets/images/logo.svg'
-import googleIconImg from '../../assets/images/google-icon.svg'
 
 import { ContainerMain, ContainerHome, ContainerContent } from './styles'
 import { Button } from '../../components/Button'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-export function Home() {
-  const navigate = useNavigate()
-
-  function handleCreateRoom() {
-    navigate('rooms/new')
-  }
-
+export function NewRoom() {
   return (
     <ContainerHome>
       <aside>
@@ -26,15 +19,15 @@ export function Home() {
       <ContainerMain>
         <ContainerContent>
           <img src={logoImg} alt="letmeask" />
-          <button onClick={handleCreateRoom}>
-            <img src={googleIconImg} alt="Logo Google" />
-            Crie sua sala com Google
-          </button>
-          <div className="separator">Ou entre em uma sala</div>
+
+          <h2>Criar uma nova sala</h2>
           <form>
-            <input type="text" placeholder="Digite o codigo da sala" />
+            <input type="text" placeholder="Nome da sala" />
             <Button>Entrar na sala</Button>
           </form>
+          <p>
+            Quer entrar em uma sala existente? <Link to="/">Clique Aqui</Link>
+          </p>
         </ContainerContent>
       </ContainerMain>
     </ContainerHome>
