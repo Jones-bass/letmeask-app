@@ -3,6 +3,7 @@ import logoImg from '../../assets/images/logo.svg'
 import googleIconImg from '../../assets/images/google-icon.svg'
 
 import { ContainerMain, ContainerHome, ContainerContent } from './styles'
+import { Button } from '../../components/Button'
 
 export function Home() {
   return (
@@ -25,7 +26,7 @@ export function Home() {
           <div className="separator">Ou entre em uma sala</div>
           <form>
             <input type="text" placeholder="Digite o codigo da sala" />
-            <button>Entrar na sala</button>
+            <Button>Entrar na sala</Button>
           </form>
         </ContainerContent>
       </ContainerMain>
