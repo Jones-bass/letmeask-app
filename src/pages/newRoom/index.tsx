@@ -4,8 +4,12 @@ import logoImg from '../../assets/images/logo.svg'
 import { ContainerMain, ContainerHome, ContainerContent } from './styles'
 import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../contexts/AuthContext'
 
 export function NewRoom() {
+  const { user } = useContext(AuthContext)
+
   return (
     <ContainerHome>
       <aside>
@@ -21,6 +25,7 @@ export function NewRoom() {
           <img src={logoImg} alt="letmeask" />
 
           <h2>Criar uma nova sala</h2>
+          {user?.name}
           <form>
             <input type="text" placeholder="Nome da sala" />
             <Button>Entrar na sala</Button>

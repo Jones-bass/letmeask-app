@@ -5,12 +5,18 @@ import googleIconImg from '../../assets/images/google-icon.svg'
 import { ContainerMain, ContainerHome, ContainerContent } from './styles'
 import { Button } from '../../components/Button'
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../contexts/AuthContext'
 
 export function Home() {
-  const navigate = useNavigate()
+  const { user, signInWithGoogle } = useContext(AuthContext)
+  const navegate = useNavigate()
 
-  function handleCreateRoom() {
-    navigate('rooms/new')
+  async function handleCreateRoom() {
+    if (!user) {
+      await signInWithGoogle()
+    }
+    navegate('/rooms/new')
   }
 
   return (
