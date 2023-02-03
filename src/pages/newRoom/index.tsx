@@ -3,11 +3,31 @@ import logoImg from '../../assets/images/logo.svg'
 
 import { ContainerMain, ContainerHome, ContainerContent } from './styles'
 import { Button } from '../../components/Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
+import { FormEvent, useState } from 'react'
+import { database } from '../../services/firebase'
 
 export function NewRoom() {
+  const [newRoom, setNewRoom] = useState('')
   const { user } = useAuth()
+  const navigate = useNavigate()
+
+  async function handleCreateRoom(event: FormEvent) {
+    event.preventDefault()
+
+    if (newRoom.trim() === '') {
+      return
+    }
+    const roomRef = database.ref('rooms')
+
+    const firebaseRoom = await roomRef.push({
+      title: newRoom,
+      authorId: user?.id,
+    })
+
+    navigate(`/rooms/${firebaseRoom.key}`)
+  }
 
   return (
     <ContainerHome>
@@ -25,8 +45,13 @@ export function NewRoom() {
 
           <h2>Criar uma nova sala</h2>
           {user?.name}
-          <form>
-            <input type="text" placeholder="Nome da sala" />
+          <form onSubmit={handleCreateRoom}>
+            <input
+              type="text"
+              placeholder="Nome da sala"
+              onChange={(event) => setNewRoom(event.target.value)}
+              value={newRoom}
+            />
             <Button>Entrar na sala</Button>
           </form>
           <p>
