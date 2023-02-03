@@ -4,11 +4,10 @@ import logoImg from '../../assets/images/logo.svg'
 import { ContainerMain, ContainerHome, ContainerContent } from './styles'
 import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-import { AuthContext } from '../../contexts/AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 
 export function NewRoom() {
-  const { user } = useContext(AuthContext)
+  const { user } = useAuth()
 
   return (
     <ContainerHome>
