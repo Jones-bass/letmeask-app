@@ -3,11 +3,11 @@ import logoImg from '../../assets/images/logo.svg'
 import googleIconImg from '../../assets/images/google-icon.svg'
 
 import { ContainerMain, ContainerHome, ContainerContent } from './styles'
-import { Button } from '../../components/Button'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { database } from '../../services/firebase'
 import { FormEvent, useState } from 'react'
+import { Button } from '../../components/Button/Button'
 
 export function Home() {
   const { user, signInWithGoogle } = useAuth()

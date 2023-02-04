@@ -2,7 +2,7 @@ import illustrationImg from '../../assets/images/illustration.svg'
 import logoImg from '../../assets/images/logo.svg'
 
 import { ContainerMain, ContainerHome, ContainerContent } from './styles'
-import { Button } from '../../components/Button'
+import { Button } from '../../components/Button/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { FormEvent, useState } from 'react'
