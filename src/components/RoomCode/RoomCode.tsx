@@ -1,13 +1,13 @@
 import copyImg from '../../assets/images/copy.svg'
 import { ButtonCode, ContainerImage } from './styles'
 
-type RoomCodeProps = {
+interface RoomCodeProps {
   code: string
 }
 
-export function RoomCode(props: RoomCodeProps) {
+export function RoomCode({ code }: RoomCodeProps) {
   function copyRoomToClipboard() {
-    navigator.clipboard.writeText(props.code)
+    navigator.clipboard.writeText(code)
   }
 
   return (
@@ -15,7 +15,7 @@ export function RoomCode(props: RoomCodeProps) {
       <ContainerImage>
         <img src={copyImg} alt="copy room code" />
       </ContainerImage>
-      <span>Sala #{props.code}</span>
+      <span>Sala {code}</span>
     </ButtonCode>
   )
 }
