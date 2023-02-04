@@ -4,6 +4,7 @@ import logoImg from '../../assets/images/logo.svg'
 import { Button } from '../../components/Button/Button'
 import { RoomCode } from '../../components/RoomCode/RoomCode'
 import { useAuth } from '../../hooks/useAuth'
+import { useRoom } from '../../hooks/useRoom'
 import { database } from '../../services/firebase'
 import { Container, ContainerHeader, ContainerMain } from './styles'
 
@@ -12,10 +13,13 @@ type RoomParams = {
 }
 
 export function Room() {
-  const [newQuestion, setNewQuestion] = useState('')
   const { user } = useAuth()
+  const params = useParams<RoomParams>()
+  const [newQuestion, setNewQuestion] = useState('')
 
-  const { id: roomId } = useParams<RoomParams>()
+  const roomId = params.id
+
+  const { questions, title } = useRoom(roomId)
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -49,14 +53,14 @@ export function Room() {
       <ContainerHeader>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
-          <RoomCode code={`#${roomId}`} />
+          <RoomCode code={`#${params.id}`} />
         </div>
       </ContainerHeader>
       <ContainerMain>
         <div className="room-title">
-          <h1>Sala </h1>
+          <h1>Sala {title} </h1>
 
-          <span> pergunta(s)</span>
+          {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
 
         <form onSubmit={handleSendQuestion}>
