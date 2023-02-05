@@ -7,7 +7,7 @@ export const ContainerHome = styled.div`
 
   aside {
     flex: 7;
-    background-color: ${(props) => props.theme.blue};
+    background-color: ${(props) => props.theme.purpleLight};
     color: ${(props) => props.theme.white};
 
     display: flex;

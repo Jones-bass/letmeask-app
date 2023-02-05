@@ -2,11 +2,17 @@ import { useState, FormEvent } from 'react'
 import { useParams } from 'react-router-dom'
 import logoImg from '../../assets/images/logo.svg'
 import { Button } from '../../components/Button/Button'
+import { Question } from '../../components/Questions/Question'
 import { RoomCode } from '../../components/RoomCode/RoomCode'
 import { useAuth } from '../../hooks/useAuth'
 import { useRoom } from '../../hooks/useRoom'
 import { database } from '../../services/firebase'
-import { Container, ContainerHeader, ContainerMain } from './styles'
+import {
+  Container,
+  ContainerHeader,
+  ContainerMain,
+  QuestionList,
+} from './styles'
 
 type RoomParams = {
   id: string
@@ -86,6 +92,17 @@ export function Room() {
             </Button>
           </div>
         </form>
+        <QuestionList>
+          {questions.map((item) => {
+            return (
+              <Question
+                key={item.id}
+                content={item.content}
+                author={item.author}
+              />
+            )
+          })}
+        </QuestionList>
       </ContainerMain>
     </Container>
   )

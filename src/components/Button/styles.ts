@@ -4,7 +4,7 @@ export const ButtonContainer = styled.button`
   height: 50px;
   border-radius: 8px;
   font-weight: 500;
-  background: ${(props) => props.theme.blue};
+  background: ${(props) => props.theme.purpleLight};
   color: ${(props) => props.theme.white};
   padding: 0 32px;
 

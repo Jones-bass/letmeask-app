@@ -7,8 +7,9 @@ export const ButtonCode = styled.button`
   border-radius: 8px;
   overflow: hidden;
 
-  background: #fff;
-  border: 1px solid #835afd;
+  background-color: ${(props) => props.theme.white};
+
+  border: 1px solid ${(props) => props.theme.purpleLight};
   cursor: pointer;
 
   display: flex;
@@ -24,7 +25,8 @@ export const ButtonCode = styled.button`
   }
 `
 export const ContainerImage = styled.div`
-  background: #835afd;
+  background-color: ${(props) => props.theme.purpleLight};
+
   padding: 0 12px;
   display: flex;
   justify-content: center;
