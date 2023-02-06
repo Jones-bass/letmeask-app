@@ -41,31 +41,31 @@ export const Footer = styled.div`
       display: flex;
       gap: 16px;
     }
+  }
 
-    button {
-      border: 0;
-      background: transparent;
-      cursor: pointer;
+  button {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
 
-      &.like-button {
-        display: flex;
-        align-items: flex-end;
-        color: ${(props) => props.theme.gray300};
-        gap: 8px;
+    &.like-button {
+      display: flex;
+      align-items: flex-end;
+      color: ${(props) => props.theme.gray300};
+      gap: 8px;
 
-        transition: filter 0.2ms;
+      transition: filter 0.2ms;
 
-        &.liked {
-          color: ${(props) => props.theme.purpleLight};
+      &.liked {
+        color: ${(props) => props.theme.purpleLight};
 
-          svg path {
-            stroke: ${(props) => props.theme.purpleLight};
-          }
+        svg path {
+          stroke: ${(props) => props.theme.purpleLight};
         }
+      }
 
-        &:hover {
-          filter: brightness(0.7);
-        }
+      &:hover {
+        filter: brightness(0.7);
       }
     }
   }

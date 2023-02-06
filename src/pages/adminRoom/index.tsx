@@ -1,13 +1,15 @@
 import { useParams } from 'react-router-dom'
 import logoImg from '../../assets/images/logo.svg'
+import { Button } from '../../components/Button/Button'
 import { Question } from '../../components/Questions/Question'
 import { RoomCode } from '../../components/RoomCode/RoomCode'
 import { useRoom } from '../../hooks/useRoom'
 import {
-  Container,
-  ContainerHeader,
-  ContainerMain,
-  QuestionList,
+  ContainerAdmin,
+  ContainerHeaderAdmin,
+  ButtonHeader,
+  ContainerMainAdmin,
+  QuestionListAdmin,
 } from './styles'
 
 type RoomParams = {
@@ -22,21 +24,27 @@ export function AdminRoom() {
   const { questions, title } = useRoom(roomId)
 
   return (
-    <Container>
-      <ContainerHeader>
+    <ContainerAdmin>
+      <ContainerHeaderAdmin>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
-          <RoomCode code={`#${params.id}`} />
+          <ButtonHeader>
+            <RoomCode code={`#${params.id}`} />
+
+            <Button variant="secundary" onClick={() => console.log('')}>
+              Encerrar sala
+            </Button>
+          </ButtonHeader>
         </div>
-      </ContainerHeader>
-      <ContainerMain>
+      </ContainerHeaderAdmin>
+      <ContainerMainAdmin>
         <div className="room-title">
           <h1>Sala {title} </h1>
 
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
 
-        <QuestionList>
+        <QuestionListAdmin>
           {questions.map((item) => {
             return (
               <Question
@@ -46,8 +54,8 @@ export function AdminRoom() {
               />
             )
           })}
-        </QuestionList>
-      </ContainerMain>
-    </Container>
+        </QuestionListAdmin>
+      </ContainerMainAdmin>
+    </ContainerAdmin>
   )
 }

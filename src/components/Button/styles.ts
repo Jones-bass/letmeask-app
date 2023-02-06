@@ -1,10 +1,14 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const ButtonContainer = styled.button`
+interface ButtonProps {
+  variant: string
+}
+
+export const ButtonContainer = styled.button<ButtonProps>`
+  background: ${(props) => props.theme.purpleLight};
   height: 50px;
   border-radius: 8px;
   font-weight: 500;
-  background: ${(props) => props.theme.purpleLight};
   color: ${(props) => props.theme.white};
   padding: 0 32px;
 
@@ -16,6 +20,14 @@ export const ButtonContainer = styled.button`
   border: 0;
 
   transition: filter 0.2s;
+
+  ${({ variant }) =>
+    variant !== 'primary' &&
+    css`
+      background: ${(props) => props.theme.white};
+      color: ${(props) => props.theme.purpleLight};
+      border: 1px solid ${(props) => props.theme.purpleLight};
+    `}
 
   @media (max-width: 460px) {
     padding: 0 32px;

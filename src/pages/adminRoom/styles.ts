@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-export const Container = styled.div``
+export const ContainerAdmin = styled.div``
 
-export const ContainerHeader = styled.header`
+export const ContainerHeaderAdmin = styled.header`
   padding: 24px;
   border-bottom: 1px solid ${(props) => props.theme.gray};
 
@@ -21,22 +21,21 @@ export const ContainerHeader = styled.header`
     > img {
       max-height: 45px;
     }
-
-    > div {
-      display: flex;
-      gap: 16px;
-      @media (max-width: 500px) {
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      button {
-        height: 40px;
-      }
-    }
   }
 `
-export const ContainerMain = styled.main`
+export const ButtonHeader = styled.div`
+  display: flex;
+  gap: 16px;
+
+  button {
+    height: 40px;
+  }
+  @media (max-width: 500px) {
+    flex-direction: column;
+    gap: 8px;
+  }
+`
+export const ContainerMainAdmin = styled.main`
   max-width: 800px;
   margin: 0 auto;
 
@@ -136,7 +135,7 @@ export const ContainerMain = styled.main`
     }
   }
 `
-export const QuestionList = styled.div`
+export const QuestionListAdmin = styled.div`
   margin-top: 32px;
 
   @media (max-width: 800px) {
