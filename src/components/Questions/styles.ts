@@ -37,10 +37,6 @@ export const Footer = styled.div`
 
       font-size: 14px;
     }
-    > div {
-      display: flex;
-      gap: 16px;
-    }
   }
 
   button {
@@ -69,4 +65,9 @@ export const Footer = styled.div`
       }
     }
   }
+`
+
+export const LikeButton = styled.div`
+  display: flex;
+  gap: 16px;
 `

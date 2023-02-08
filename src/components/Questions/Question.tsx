@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { QuestionContainer, Footer } from './styles'
+import { QuestionContainer, Footer, LikeButton } from './styles'
 
 type QuestionProps = {
   content?: string
@@ -22,7 +22,7 @@ export function Question({ content, author, children }: QuestionProps) {
           <img src={author.avatar} alt={author.name} />
           <span>{author.name}</span>
         </div>
-        <div>{children}</div>
+        <LikeButton>{children}</LikeButton>
       </Footer>
     </QuestionContainer>
   )

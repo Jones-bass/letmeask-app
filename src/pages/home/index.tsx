@@ -8,6 +8,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { database } from '../../services/firebase'
 import { FormEvent, useState } from 'react'
 import { Button } from '../../components/Button/Button'
+import toast from 'react-hot-toast'
 
 export function Home() {
   const { user, signInWithGoogle } = useAuth()
@@ -31,11 +32,41 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
     if (!roomRef.exists()) {
-      alert('Room does not exists.')
+      toast.error('Código inválido, tente novamente! 😔', {
+        style: {
+          color: 'red',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      })
+      return
+    }
+
+    if (roomRef.val().endedAt) {
+      toast.error('Sala já encerrada! 😔', {
+        style: {
+          color: 'red',
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
 
     navegate(`rooms/${roomCode}`)
+    toast.success('Você acabou de entrar na sala! 👏', {
+      style: {
+        color: '#835afd',
+      },
+      iconTheme: {
+        primary: '#835afd',
+        secondary: '#FFFAEE',
+      },
+    })
   }
 
   return (
@@ -63,7 +94,7 @@ export function Home() {
               onChange={(event) => setRoomCode(event.target.value)}
               value={roomCode}
             />
-            <Button>Entrar na sala</Button>
+            <Button type="submit">Entrar na sala</Button>
           </form>
         </ContainerContent>
       </ContainerMain>

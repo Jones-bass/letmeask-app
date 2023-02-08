@@ -6,10 +6,14 @@ import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
 import { AuthContextProvider } from './contexts/AuthContext'
 
+import { Toaster } from 'react-hot-toast'
+
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
+
+      <Toaster />
 
       <AuthContextProvider>
         <BrowserRouter>

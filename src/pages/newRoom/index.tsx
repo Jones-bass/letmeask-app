@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { FormEvent, useState } from 'react'
 import { database } from '../../services/firebase'
+import { toast } from 'react-hot-toast'
 
 export function NewRoom() {
   const [newRoom, setNewRoom] = useState('')
@@ -26,6 +27,15 @@ export function NewRoom() {
       authorId: user?.id,
     })
 
+    toast.success('Parabéns, sala criada com sucesso! 🤩', {
+      style: {
+        color: 'green',
+      },
+      iconTheme: {
+        primary: 'green',
+        secondary: '#FFFAEE',
+      },
+    })
     navigate(`/rooms/${firebaseRoom.key}`)
   }
 
@@ -52,7 +62,7 @@ export function NewRoom() {
               onChange={(event) => setNewRoom(event.target.value)}
               value={newRoom}
             />
-            <Button>Entrar na sala</Button>
+            <Button type="submit">Criar Sala</Button>
           </form>
           <p>
             Quer entrar em uma sala existente? <Link to="/">Clique Aqui</Link>
