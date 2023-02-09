@@ -1,7 +1,24 @@
 import styled from 'styled-components'
 
-export const QuestionContainer = styled.div`
-  background: #fefefe;
+interface QuestionProps {
+  isAnswered: boolean
+  isHighlighted: boolean
+}
+
+const colors = {
+  background: '#fefefe',
+  background100: '#f4f0ff',
+  background200: '#DBDCDD',
+}
+
+export const QuestionContainer = styled.div<QuestionProps>`
+  background-color: ${({ isAnswered, isHighlighted }) =>
+    isAnswered
+      ? colors.background200
+      : isHighlighted
+      ? colors.background100
+      : colors.background};
+
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   padding: 24px;

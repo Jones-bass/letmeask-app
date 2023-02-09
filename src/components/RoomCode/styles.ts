@@ -19,7 +19,7 @@ export const ButtonCode = styled.button`
     align-self: center;
     flex: 1;
     padding: 0 16px 0 12px;
-    width: 235px;
+    width: 265px;
     font-size: 14px;
     font-weight: 500;
   }

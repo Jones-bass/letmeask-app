@@ -12,9 +12,15 @@ type QuestionProps = {
   isHighlighted?: boolean
 }
 
-export function Question({ content, author, children }: QuestionProps) {
+export function Question({
+  content,
+  author,
+  isAnswered = false,
+  isHighlighted = false,
+  children,
+}: QuestionProps) {
   return (
-    <QuestionContainer>
+    <QuestionContainer isAnswered={isAnswered} isHighlighted={isHighlighted}>
       <p>{content}</p>
 
       <Footer>
